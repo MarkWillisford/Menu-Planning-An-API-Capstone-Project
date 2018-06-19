@@ -11,6 +11,12 @@ function getIngredientsView(){
             <button class="removeGroup">-</button>
           </div>        
         <button type="submit" class="js-submitButton">Search</button>
+
+        <fieldset>
+          <legend class="optionalFilters">Optional Filters</legend>
+          <label>Mexican Food<input id="optionalCheckBox" type="checkbox" name="mexicanFoodCB"></label>
+        </fieldset>
+        
       </form>
     </section>
   </div>
