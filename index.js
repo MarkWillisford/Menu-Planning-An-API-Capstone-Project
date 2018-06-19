@@ -76,22 +76,55 @@ function addSearchParamaterGroup(){
   $('.main').on('click', '.js-addGroup', function (event) {    
     event.preventDefault();   
     $(this).parent().parent().append(
-      `<div class="searchParamaterGroup">
-        <label><input type="text" name="searchParamater" placeholder="Enter an ingredient"></label>
-        <button class="js-addGroup">+</button>
-        <button class="js-removeGroup">-</button>
-       </div>  `
+      `<div class="searchParamaterGroups">
+        <div class="searchParamaterGroup">
+          <label><input type="text" class="searchParamaterText" name="searchParamater" placeholder="Enter an ingredient"></label>
+          <button class="js-addGroup disabled" disabled="true">+</button>
+          <button class="js-removeGroup">-</button>
+        </div>       
+      </div>`
     );
+
+    // Activate the current groups removal button and deactivate the current add button
+    $(this).prop('disabled',true).addClass('disabled');
+    $(this).next().prop('disabled',false).removeClass('disabled');
   });  
 }
 
 function removeSearchParamaterGroup(){
   $('.main').on('click', '.js-removeGroup', function (event) {    
-    event.preventDefault();    
-    console.log($(this));
-    console.log($(this).closest('.searchParamaterGroup'));
+    event.preventDefault();
     $(this).closest('.searchParamaterGroup').remove();
+
+    // Check for a single group remaining and if so deactivate the removal button
+    if($('.searchParamaterGroup').length===1){
+      $('.js-removeGroup').prop('disabled',true).addClass('disabled');
+    }
   });    
+}
+
+// This function will listen to the text boxes and activates a number of buttons once the user inputs data
+function onTypingInSearch(){
+  $('.main').on('input', '.searchParamaterText', function (event) {  
+    console.log('yes Im listening');
+    // if there is a single char then activate the submission and + buttons
+    if($(this).val().length===1){
+      $('.js-submitButton').prop('disabled',false).removeClass('disabled');
+      $(this).parent().next().prop('disabled',false).removeClass('disabled');
+    }
+    // if there are now zero characters then deactivate the same buttons
+    else if($(this).val().length===0){
+      $(this).parent().next().prop('disabled',true).addClass('disabled');
+      // however we can only deactivate the submit button if all text inputs are empty - so how do I do that . . .   
+      // TODO!!
+      // $('.js-submitButton').prop('disabled',true).addClass('disabled');
+    }
+
+    
+
+
+
+  });   
 }
 
 // This is a great idea. TODO!
@@ -125,6 +158,7 @@ function runApp(){
   searchByNutritionButton();
   addSearchParamaterGroup();
   removeSearchParamaterGroup();
+  onTypingInSearch();
 }
 
 $(runApp);

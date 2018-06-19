@@ -7,12 +7,12 @@ function getNutritionView(){
 	        <legend class="searchFields"></legend>
 	          <div class="searchParamaterGroups">
 	            <div class="searchParamaterGroup">
-	              <label><input type="text" name="searchParamater" placeholder="Enter an ingredient"></label>
-	              <button class="js-addGroup">+</button>
-	              <button class="js-removeGroup">-</button>
+	              <label><input type="text" class="searchParamaterText" name="searchParamater" placeholder="Enter an ingredient"></label>
+	              <button class="js-addGroup disabled" disabled="true">+</button>
+	              <button class="js-removeGroup disabled" disabled="true">-</button>
 	            </div>       
 	          </div> 
-	        <button type="submit" class="js-submitButton">Search</button>
+	        <button type="submit" class="js-submitButton disabled" disabled="true">Search</button>
 
 	        <fieldset>
 	          <legend class="optionalFilters">Optional Filters</legend>
