@@ -51,17 +51,26 @@ const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
   });
 }     */
 
+// This function listens for the user to click on the welcome screen search button
 function startSearchButton(){
   $('.main').on('click', '.js-beginButton', function (event) {
-    console.log('made it here');
-  });
-
-
-
-  $('.js-beginButton').click(function() {
-      $('.dropdown-content').toggleClass("show");
+    $('.dropdown-content').toggleClass("show");
   });
  };
+
+// These two functions listen for the user to select one of the dropdown buttons made viewable by the above function
+function searchByIngredientsButton(){
+  $('.main').on('click', '.js-searchByIngredientsViewBtn', function (event) {    
+    $('.welcomeView').remove();
+    render(getIngredientsView());
+  });  
+}
+function searchByNutritionButton(){
+  $('.main').on('click', '.js-searchByNutritionViewBtn', function (event) {    
+    $('.welcomeView').remove();
+    render(getNutritionView());
+  });  
+}
 
 // This is a great idea. TODO!
 // Close the dropdown menu if the user clicks outside of it
@@ -81,18 +90,17 @@ window.onclick = function(event) {
 
 // This function accepts a string, converts it to HTML and adds it to the DOM - note: security risk
 function render(view){
-  console.log('in render');
   $('.main').append(view);
 }
 
 function runApp(){
   // Render the starting view by calling a function found in the applicable .js file in the Views 
   // folder. These functions return the needed HTML as a string to pass to the render function above
-  console.log(getWelcomeView());
   render(getWelcomeView());
   // Activate listeners
   startSearchButton();
-
+  searchByIngredientsButton();
+  searchByNutritionButton();
 }
 
 $(runApp);
