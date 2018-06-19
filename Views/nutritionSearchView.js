@@ -5,13 +5,15 @@ function getNutritionView(){
 	    <section>
 	      <form class="searchForm" action="Unknown" method="post">
 	        <legend class="searchFields"></legend>
-	          <div class="searchParamaterGroup">
-	            <label><input type="text" name="searchParamater" placeholder="Enter a nutriant: I.E. 'vitamin d'"></label>
-	            <button class="addGroup">+</button>
-	            <button class="removeGroup">-</button>
-	          </div>        
+	          <div class="searchParamaterGroups">
+	            <div class="searchParamaterGroup">
+	              <label><input type="text" name="searchParamater" placeholder="Enter an ingredient"></label>
+	              <button class="js-addGroup">+</button>
+	              <button class="js-removeGroup">-</button>
+	            </div>       
+	          </div> 
 	        <button type="submit" class="js-submitButton">Search</button>
-	        
+
 	        <fieldset>
 	          <legend class="optionalFilters">Optional Filters</legend>
 	          <label>Mexican Food<input id="optionalCheckBox" type="checkbox" name="mexicanFoodCB"></label>

@@ -72,6 +72,28 @@ function searchByNutritionButton(){
   });  
 }
 
+function addSearchParamaterGroup(){
+  $('.main').on('click', '.js-addGroup', function (event) {    
+    event.preventDefault();   
+    $(this).parent().parent().append(
+      `<div class="searchParamaterGroup">
+        <label><input type="text" name="searchParamater" placeholder="Enter an ingredient"></label>
+        <button class="js-addGroup">+</button>
+        <button class="js-removeGroup">-</button>
+       </div>  `
+    );
+  });  
+}
+
+function removeSearchParamaterGroup(){
+  $('.main').on('click', '.js-removeGroup', function (event) {    
+    event.preventDefault();    
+    console.log($(this));
+    console.log($(this).closest('.searchParamaterGroup'));
+    $(this).closest('.searchParamaterGroup').remove();
+  });    
+}
+
 // This is a great idea. TODO!
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
@@ -101,6 +123,8 @@ function runApp(){
   startSearchButton();
   searchByIngredientsButton();
   searchByNutritionButton();
+  addSearchParamaterGroup();
+  removeSearchParamaterGroup();
 }
 
 $(runApp);
