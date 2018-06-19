@@ -79,18 +79,17 @@ window.onclick = function(event) {
   }
 }
 
-
-
 // This function accepts a string, converts it to HTML and adds it to the DOM - note: security risk
 function render(view){
+  console.log('in render');
   $('.main').append(view);
 }
 
 function runApp(){
   // Render the starting view by calling a function found in the applicable .js file in the Views 
   // folder. These functions return the needed HTML as a string to pass to the render function above
+  console.log(getWelcomeView());
   render(getWelcomeView());
-
   // Activate listeners
   startSearchButton();
 
