@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>AJAX Youtube API</title>
+        <title>AJAX Recipies API</title>
         <script
           src="https://code.jquery.com/jquery-3.2.1.min.js"
           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -12,18 +12,27 @@
     </head>
     <body>
       <main>
-        <h1>Search videos by name on Youtube</h1>
-          <form action="#" class="js-search-form">
-            <label for="query"></label>
-            <input type="text" class="js-query">
-            <button type="submit">Search</button>
-          </form>
+        <h1>Welcome</h1>
+          <section>
+            <p>
+              Welcome to our meal preparation and Nutrition reference tool
+            </p>
+            <div class="dropdown">
+            <button class="js-beginButton">Search Recipies</button>
+              <div id="searchOptionsDropdown" class="dropdown-content">
+                <a href="#">Search by Ingredients</a>
+                <a href="#">Search by Nutrition Information</a>
+              </div>
+            </div>
+          </section>
           
-          <h2>Results</h2>
           <div class="js-search-results">
             
           </div>
       </main>
+      <!-- Views -->
+      <script src="Views/welcomeView.js"></script>      
+      <!-- Scripts -->
       <script src="index.js"></script>
     </body>
 </html>
