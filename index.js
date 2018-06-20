@@ -2,56 +2,6 @@
 const SEARCH_BY_INGREDIENTS_UTL = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/
 recipes/findByIngredients`;
 
-/*    function getDataFromApi(searchTerm, callback) {
-  const settings = {
-    url: YOUTUBE_SEARCH_URL,
-    data: {
-      q: `${searchTerm} in:name`,
-      per_page: 5,
-      part: 'snippet',
-      key: 'AIzaSyAO2Uspz6K8ulVW0pVLlh-q9nR8BeJXJ2I'
-    },
-    dataType: 'json',
-    type: 'GET',
-    success: callback,
-    error: function(e){
-      console.log(e);
-    }
-  };
-
-  //console.log(`parmObject created: ${settings}`);
-  $.ajax(settings);
-}       */
-
-/*    function renderResult(result) {
-  return `
-    <div>      
-      <a class="js-result-name" href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank"><img src="${result.snippet.thumbnails.medium.url}"></a>
-    </div>
-  `;
-}     */
-
-/*    function displayYouTubeSearchData(data) {  
-  const results = data.items.map((item, index) => renderResult(item));
-  console.log(data);
-  $('.js-search-results').html(results);
-  
-}     */
-
-
-
-/*    function watchSubmit() {
-  $('.js-search-form').submit(event => {
-    event.preventDefault();
-    const queryTarget = $(event.currentTarget).find('.js-query');
-    const query = queryTarget.val();
-    // clear out the input
-    queryTarget.val("");
-    //console.log(`about to search for ${query}`);
-    getDataFromApi(query, displayYouTubeSearchData);
-  });
-}     */
-
 // This function listens for the user to click on the welcome screen search button
 function startSearchButton(){
   $('.main').on('click', '.js-beginButton', function (event) {
@@ -127,16 +77,34 @@ function onTypingInSearch(){
 function searchByIngredientsSubmitButton(){
   $('.main').on('submit', '.searchIngredientsForm', function (event) { 
     event.preventDefault();
+    /* Working for Single search paramaters - 
     const queryTarget = $(event.currentTarget).find('.searchParamaterText');
     const query = queryTarget.val(); 
+    */
 
-    getDataFromIngredientsApi(query, displaySearchData);
+    // first get an array of all the text boxes
+    const queryBoxesValues = [];
+    let values = $('.searchParamaterText').filter(function() {
+      return $(this).val();
+    }).get(); // converts collection to array
+
+    // turn it into an array of the values in those text boxes
+    for(let i=0;i<values.length;i++){
+      // console.log(values[i].value);
+      queryBoxesValues.push(values[i].value);
+    }
+    // then turn that array into a JSON object
+    const queryBoxesValuesJSON = JSON.stringify(queryBoxesValues);
+    // console.log(queryBoxesValues);
+
+    // and finally send it off to the API with the call back function
+    getDataFromIngredientsApi(queryBoxesValuesJSON, displaySearchData);
   });  
 }
 
 // This function builds the data and calls the AJAX .getJSON method
-// TODO This isn't authenticating
 function getDataFromIngredientsApi(searchTerm, callback){
+  console.log(searchTerm);
   $.ajax({
     url: SEARCH_BY_INGREDIENTS_UTL,
     type: 'GET',
@@ -160,8 +128,19 @@ function getDataFromIngredientsApi(searchTerm, callback){
 
 // This function will display the results of the AJAX call to the page
 function displaySearchData(data){
-  // const results = data.items.map((item, index) => renderResult(item));
-  console.log(data);  
+  // console.log(data);  
+  // Rendering methods
+  const html = data.map(item => `<div>
+      <h2>${item.title}</h2>
+      <a href=""><img src=${item.image} width="64" height="64" alt=${item.title}></a>
+    </div>`);
+
+  /* temporary - just to make it work for now */
+  $('.main > div ').remove();
+  /* end temporary code */
+
+  render(getRecipiesResultsView());
+  $('.resultsViewSection').html(html);
 }
 
 // This is a great idea. TODO!

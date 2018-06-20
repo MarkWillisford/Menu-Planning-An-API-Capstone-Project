@@ -1,7 +1,7 @@
 function getWelcomeView(){
 	welcomeView = `
 	<div class="welcomeView">
-      <h1>Welcome</h1>
+      <h1>Come to the Table</h1>
       <section>
         <p>
           Welcome to our meal preparation and Nutrition reference tool
