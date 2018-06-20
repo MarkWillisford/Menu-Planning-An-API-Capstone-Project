@@ -1,5 +1,6 @@
 'use strict';
-const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
+const SEARCH_BY_INGREDIENTS_UTL = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/
+recipes/findByIngredients`;
 
 /*    function getDataFromApi(searchTerm, callback) {
   const settings = {
@@ -119,12 +120,48 @@ function onTypingInSearch(){
       // TODO!!
       // $('.js-submitButton').prop('disabled',true).addClass('disabled');
     }
-
-    
-
-
-
   });   
+}
+
+// This function listens for the user to press the submit button on a search page
+function searchByIngredientsSubmitButton(){
+  $('.main').on('submit', '.searchIngredientsForm', function (event) { 
+    event.preventDefault();
+    const queryTarget = $(event.currentTarget).find('.searchParamaterText');
+    const query = queryTarget.val(); 
+
+    getDataFromIngredientsApi(query, displaySearchData);
+  });  
+}
+
+// This function builds the data and calls the AJAX .getJSON method
+// TODO This isn't authenticating
+function getDataFromIngredientsApi(searchTerm, callback){
+  $.ajax({
+    url: SEARCH_BY_INGREDIENTS_UTL,
+    type: 'GET',
+    data: {
+      fillIngredients: "true",
+      ingredients: searchTerm,
+      limitLicense: "false",
+      number: "10",
+      ranking: "1"
+    },
+    datatype: 'json',
+    success: callback,
+    error: function(err) { console.log(err); },
+    beforeSend: function(xhr) {
+      // This is a free api so this isn't an issue, however!  BAD CODE!
+      xhr.setRequestHeader("X-Mashape-Key", "b12jWQWQxfmshv0FFKT9wsWFthTkp189NfbjsnisHkjkNVMsjm");  
+      xhr.setRequestHeader("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com");
+    }
+  });
+}
+
+// This function will display the results of the AJAX call to the page
+function displaySearchData(data){
+  // const results = data.items.map((item, index) => renderResult(item));
+  console.log(data);  
 }
 
 // This is a great idea. TODO!
@@ -159,6 +196,8 @@ function runApp(){
   addSearchParamaterGroup();
   removeSearchParamaterGroup();
   onTypingInSearch();
+  searchByIngredientsSubmitButton();
+
 }
 
 $(runApp);

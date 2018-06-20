@@ -3,7 +3,7 @@ function getIngredientsView(){
   <div class="ingredientsView"
     <h1>Search by Ingredients</h1>
     <section>
-      <form class="searchForm" action="Unknown" method="post">
+      <form class="searchIngredientsForm" action="Unknown" method="post">
         <legend class="searchFields"></legend>
           <div class="searchParamaterGroups">
             <div class="searchParamaterGroup">

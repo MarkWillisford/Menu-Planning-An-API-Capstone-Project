@@ -3,7 +3,7 @@ function getNutritionView(){
 	  <div class="nutritionView"
 	    <h1>Search by nutrition information</h1>
 	    <section>
-	      <form class="searchForm" action="Unknown" method="post">
+	      <form class="searchNutritionForm" action="Unknown" method="post">
 	        <legend class="searchFields"></legend>
 	          <div class="searchParamaterGroups">
 	            <div class="searchParamaterGroup">
