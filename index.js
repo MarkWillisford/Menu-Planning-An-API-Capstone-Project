@@ -1,6 +1,7 @@
 'use strict';
 const SEARCH_BY_INGREDIENTS_UTL = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/
 recipes/findByIngredients`;
+const RECIPE_INFORMATION_UTL = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/`;
 
 // This function listens for the user to click on the welcome screen search button
 function startSearchButton(){
@@ -104,7 +105,7 @@ function searchByIngredientsSubmitButton(){
 
 // This function builds the data and calls the AJAX .getJSON method
 function getDataFromIngredientsApi(searchTerm, callback){
-  console.log(searchTerm);
+  // console.log(searchTerm);
   $.ajax({
     url: SEARCH_BY_INGREDIENTS_UTL,
     type: 'GET',
@@ -121,18 +122,40 @@ function getDataFromIngredientsApi(searchTerm, callback){
     beforeSend: function(xhr) {
       // This is a free api so this isn't an issue, however!  BAD CODE!
       xhr.setRequestHeader("X-Mashape-Key", "b12jWQWQxfmshv0FFKT9wsWFthTkp189NfbjsnisHkjkNVMsjm");  
+      xhr.setRequestHeader("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/");
+    }
+  });
+}
+
+function getDataFromRecipiesApi(searchTerm, callback){
+  // console.log(searchTerm);
+  $.ajax({
+    url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${searchTerm}/information`,
+    type: 'GET',
+    data: {
+      id: searchTerm,
+      includeNutrition: "true"
+    },
+    datatype: 'json',
+    success: callback,
+    error: function(err) { console.log(err); },
+    beforeSend: function(xhr) {
+      // This is a free api so this isn't an issue, however!  BAD CODE!
+      xhr.setRequestHeader("X-Mashape-Key", "b12jWQWQxfmshv0FFKT9wsWFthTkp189NfbjsnisHkjkNVMsjm");  
       xhr.setRequestHeader("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com");
     }
   });
 }
 
-// This function will display the results of the AJAX call to the page
+// These functions will display the results of the AJAX calls to the page
 function displaySearchData(data){
-  // console.log(data);  
+  console.log(data);  
   // Rendering methods
   const html = data.map(item => `<div>
       <h2>${item.title}</h2>
-      <a href=""><img src=${item.image} width="64" height="64" alt=${item.title}></a>
+      <!--<a href="">-->
+      <img class="image-link" src=${item.image} width="64" height="64" alt="${item.title}" data-id="${item.id}">
+      <!--</a>-->
     </div>`);
 
   /* temporary - just to make it work for now */
@@ -141,6 +164,22 @@ function displaySearchData(data){
 
   render(getRecipiesResultsView());
   $('.resultsViewSection').html(html);
+}
+
+// TODO!
+function displayRecipieData(data){
+  console.log(data);
+}
+
+function recipieLinkButton(){
+  $('.main').on('click', '.image-link', function(event){
+    event.preventDefault();
+    console.log(`Inside link button function - 'button' has been clicked`);
+    console.log( $(this).attr('data-id') );
+
+    getDataFromRecipiesApi($(this).attr('data-id'), displayRecipieData);
+
+  })
 }
 
 // This is a great idea. TODO!
@@ -176,7 +215,7 @@ function runApp(){
   removeSearchParamaterGroup();
   onTypingInSearch();
   searchByIngredientsSubmitButton();
-
+  recipieLinkButton();
 }
 
 $(runApp);
