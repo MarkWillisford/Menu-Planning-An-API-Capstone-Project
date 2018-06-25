@@ -1,7 +1,7 @@
-function getRecipieView(){
+function getRecipieView(data){
 	recipieView = `
   <div class="recipieView"
-    <h1>${}</h1>
+    <h1>${data.title}</h1>
     <section class="resultsViewSection">
 
     </section>

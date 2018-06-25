@@ -58,7 +58,7 @@ function removeSearchParamaterGroup(){
 // This function will listen to the text boxes and activates a number of buttons once the user inputs data
 function onTypingInSearch(){
   $('.main').on('input', '.searchParamaterText', function (event) {  
-    console.log('yes Im listening');
+    // console.log('yes Im listening');
     // if there is a single char then activate the submission and + buttons
     if($(this).val().length===1){
       $('.js-submitButton').prop('disabled',false).removeClass('disabled');
@@ -149,7 +149,7 @@ function getDataFromRecipiesApi(searchTerm, callback){
 
 // These functions will display the results of the AJAX calls to the page
 function displaySearchData(data){
-  console.log(data);  
+  // console.log(data);  
   // Rendering methods
   const html = data.map(item => `<div>
       <h2>${item.title}</h2>
@@ -169,6 +169,17 @@ function displaySearchData(data){
 // TODO!
 function displayRecipieData(data){
   console.log(data);
+  // Rendering methods
+  const html = data.map(item => `<div>
+      <h2>${item.title}</h2>
+      <!--<a href="">-->
+      <img class="image-link" src=${item.image} width="64" height="64" alt="${item.title}" data-id="${item.id}">
+      <!--</a>-->
+    </div>`);
+
+  /* temporary - just to make it work for now */
+  $('.main > div ').remove();
+  /* end temporary code */
 }
 
 function recipieLinkButton(){
