@@ -42,3 +42,8 @@ body {
 .disabled {
     color: #999;
 }
+
+/* just a little to make the recipies look a bit better */
+.ingredientsList{
+    display: inline-block;
+}

@@ -170,16 +170,10 @@ function displaySearchData(data){
 }
 
 function displayRecipieData(data){
-  // console.log(data);
+  console.log(data);
   // Rendering methods
-  let pricePerServing = parseInt(data.pricePerServing);
   const html =  `
-    <img class="image" src=${data.image} alt="${data.title}" data-id="${data.id}"></br>
-    <a href="${data.sourceUrl}" target="_blank">Offsite Reference</a>
-    <a href="${data.spoonacularSourceUrl}" target="_blank">Spoonacular Reference</a>
-    <p>Ready In: ${data.readyInMinutes} minutes</p>
-    <p>Servings: ${data.servings}</p>
-    <p>Price per serving: ${pricePerServing / 100}</p>
+
     `;
 
   /* temporary - just to make it work for now */
@@ -187,14 +181,14 @@ function displayRecipieData(data){
   /* end temporary code */
 
   render(getRecipieView(data));
-  $('.resultsViewSection').html(html);  
+  //$('.resultsViewSection').html(html);  
 }
 
 function recipieLinkButton(){
   $('.main').on('click', '.image-link', function(event){
     event.preventDefault();
-    console.log(`Inside link button function - 'button' has been clicked`);
-    console.log( $(this).attr('data-id') );
+    //console.log(`Inside link button function - 'button' has been clicked`);
+    //console.log( $(this).attr('data-id') );
 
     getDataFromRecipiesApi($(this).attr('data-id'), displayRecipieData);
 
