@@ -115,7 +115,7 @@ function getDataFromIngredientsApi(searchTerm, callback){
       fillIngredients: "true",
       ingredients: searchTerm,
       limitLicense: "false",
-      number: "2",    // This is currently lowered for testing
+      number: "10",    // This is currently lowered for testing
       ranking: "1"
     },
     datatype: 'json',
