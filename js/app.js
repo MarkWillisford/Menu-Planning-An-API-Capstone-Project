@@ -168,18 +168,24 @@ function displaySearchData(data){
 
 // TODO!
 function displayRecipieData(data){
-  console.log(data);
+  // console.log(data);
   // Rendering methods
-  const html = data.map(item => `<div>
-      <h2>${item.title}</h2>
-      <!--<a href="">-->
-      <img class="image-link" src=${item.image} width="64" height="64" alt="${item.title}" data-id="${item.id}">
-      <!--</a>-->
-    </div>`);
+  let pricePerServing = parseInt(data.pricePerServing);
+  const html =  `
+    <img class="image" src=${data.image} alt="${data.title}" data-id="${data.id}"></br>
+    <a href="${data.sourceUrl}" target="_blank">Offsite Reference</a>
+    <a href="${data.spoonacularSourceUrl}" target="_blank">Spoonacular Reference</a>
+    <p>Ready In: ${data.readyInMinutes} minutes</p>
+    <p>Servings: ${data.servings}</p>
+    <p>Price per serving: ${pricePerServing / 100}</p>
+    `;
 
   /* temporary - just to make it work for now */
   $('.main > div ').remove();
   /* end temporary code */
+
+  render(getRecipieView(data));
+  $('.resultsViewSection').html(html);  
 }
 
 function recipieLinkButton(){
@@ -191,22 +197,6 @@ function recipieLinkButton(){
     getDataFromRecipiesApi($(this).attr('data-id'), displayRecipieData);
 
   })
-}
-
-// This is a great idea. TODO!
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.js-beginButton')) {
-
-    let dropdowns = $("dropdown-content");
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
 }
 
 // This function accepts a string, converts it to HTML and adds it to the DOM - note: security risk
