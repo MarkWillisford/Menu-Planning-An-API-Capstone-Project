@@ -17,6 +17,8 @@ function searchByIngredientsButton(){
     render(getIngredientsView());
   });  
 }
+
+// This feature is unavailable at this time, it has been suggested as a possible feature
 function searchByNutritionButton(){
   $('.main').on('click', '.js-searchByNutritionViewBtn', function (event) {    
     $('.welcomeView').remove();
@@ -127,6 +129,7 @@ function getDataFromIngredientsApi(searchTerm, callback){
   });
 }
 
+// This function builds the data and calls the AJAX .getJSON method
 function getDataFromRecipiesApi(searchTerm, callback){
   // console.log(searchTerm);
   $.ajax({
@@ -166,7 +169,6 @@ function displaySearchData(data){
   $('.resultsViewSection').html(html);
 }
 
-// TODO!
 function displayRecipieData(data){
   // console.log(data);
   // Rendering methods

@@ -14,11 +14,13 @@ function getIngredientsView(){
           </div> 
         <button type="submit" class="js-submitButton disabled" disabled="true">Search</button>
 
+        <!-- This feature is unavailable at this time, it has been suggested as a possible feature
         <fieldset>
           <legend class="optionalFilters">Optional Filters</legend>
           <label>Mexican Food<input id="optionalCheckBox" type="checkbox" name="mexicanFoodCB"></label>
         </fieldset>
-        
+        -->
+
       </form>
     </section>
   </div>
