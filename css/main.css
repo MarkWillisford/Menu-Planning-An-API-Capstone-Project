@@ -47,3 +47,8 @@ body {
 .ingredientsList{
     display: inline-block;
 }
+.nutritionOverview{
+    display:inline-block;
+    border: 1px solid black;
+    padding: 5px;
+}
