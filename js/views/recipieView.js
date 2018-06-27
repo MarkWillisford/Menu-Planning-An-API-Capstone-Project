@@ -2,7 +2,8 @@ function getRecipieView(data){
   let pricePerServing = parseInt(data.pricePerServing);
 
 	recipieView = `
-  <div class="recipieView"
+  <div class="recipieView">
+  	<button class="backToSearchResults">Back to results</button>
     <h1>${data.title}</h1>
     <section class="resultsViewSection">
 

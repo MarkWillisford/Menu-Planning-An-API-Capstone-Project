@@ -2,6 +2,7 @@
 const SEARCH_BY_INGREDIENTS_UTL = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/
 recipes/findByIngredients`;
 const RECIPE_INFORMATION_UTL = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/`;
+let RECIPIE_SEARCH_RESULTS = {};
 
 // This function listens for the user to click on the welcome screen search button
 function startSearchButton(){
@@ -101,7 +102,7 @@ function searchByIngredientsSubmitButton(){
     // console.log(queryBoxesValues);
 
     // and finally send it off to the API with the call back function
-    getDataFromIngredientsApi(queryBoxesValuesJSON, displaySearchData);
+    getDataFromIngredientsApi(queryBoxesValuesJSON, displaySearchDataWrapper);
   });  
 }
 
@@ -150,11 +151,23 @@ function getDataFromRecipiesApi(searchTerm, callback){
   });
 }
 
+// This function sets the global search results variable then calls the display displaySearchData function
+function displaySearchDataWrapper(data){
+  // Set the global variable
+  RECIPIE_SEARCH_RESULTS = data;
+  // console.log(RECIPIE_SEARCH_RESULTS);
+
+  // Call the display function
+  displaySearchData();
+
+}
+
 // These functions will display the results of the AJAX calls to the page
-function displaySearchData(data){
-  // console.log(data);  
+function displaySearchData(){
+  // console.log(RECIPIE_SEARCH_RESULTS);  
   // Rendering methods
-  const html = data.map(item => `<div>
+
+  const html = RECIPIE_SEARCH_RESULTS.map(item => `<div>
       <h2>${item.title}</h2>
       <!--<a href="">-->
       <img class="image-link" src=${item.image} width="64" height="64" alt="${item.title}" data-id="${item.id}">
@@ -170,11 +183,7 @@ function displaySearchData(data){
 }
 
 function displayRecipieData(data){
-  console.log(data);
   // Rendering methods
-  const html =  `
-
-    `;
 
   /* temporary - just to make it work for now */
   $('.main > div ').remove();
@@ -192,6 +201,14 @@ function recipieLinkButton(){
 
     getDataFromRecipiesApi($(this).attr('data-id'), displayRecipieData);
 
+  })
+}
+
+// This function listens for a butten click and redisplays search results
+function backToSearchResults(){
+  $('.main').on('click', '.backToSearchResults', function(event){
+    event.preventDefault();
+    displaySearchData();
   })
 }
 
@@ -213,6 +230,7 @@ function runApp(){
   onTypingInSearch();
   searchByIngredientsSubmitButton();
   recipieLinkButton();
+  backToSearchResults();
 }
 
 $(runApp);
