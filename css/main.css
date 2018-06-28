@@ -1,5 +1,31 @@
 body {
-  padding-top: 50px;
+  padding-top: 5px;
+}
+header{
+    width: 100%;
+    height: auto;
+    background-color: #5B9833;
+    text-align: center;
+}
+header, footer, .row{
+  margin-bottom: 20px;
+}
+h1{
+    color: #A2E974;
+}
+
+.welcomeViewSection{
+    text-align: center;    
+}
+
+.js-searchByIngredientsViewBtn{
+    background-color: #1D3B0A;
+    color: #81C753;
+    padding: 5px;
+}
+.js-searchByIngredientsViewBtn:hover { 
+    background-color: #A2E974;
+    color: #3A6A1B;
 }
 
 .js-result-name{

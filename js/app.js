@@ -54,6 +54,7 @@ function removeSearchParamaterGroup(){
     // Check for a single group remaining and if so deactivate the removal button
     if($('.searchParamaterGroup').length===1){
       $('.js-removeGroup').prop('disabled',true).addClass('disabled');
+      $('.js-addGroup').prop('disabled',false).removeClass('disabled');
     }
   });    
 }
@@ -62,8 +63,8 @@ function removeSearchParamaterGroup(){
 function onTypingInSearch(){
   $('.main').on('input', '.searchParamaterText', function (event) {  
     // console.log('yes Im listening');
-    // if there is a single char then activate the submission and + buttons
-    if($(this).val().length===1){
+    // if there is at least single char then activate the submission and + buttons
+    if($(this).val().length>0){
       $('.js-submitButton').prop('disabled',false).removeClass('disabled');
       $(this).parent().next().prop('disabled',false).removeClass('disabled');
     }
