@@ -2,10 +2,14 @@ function getIngredientsView(){
 	ingredientsView = `
   <div class="ingredientsView">
     <section class="ingredientsSearchView">
-      <h2>Search by Ingredients</h2>
+      <h2>Search Recipes</h2>
       <form class="searchIngredientsForm" action="Unknown" method="post">
         <legend class="searchFields"></legend>
         <div class="searchParamaterGroups">
+          <h3>
+            <span></span>
+            Ingredients to search for:
+          </h3>
           <div class="searchParamaterGroup">
             <label><input type="text" class="searchParamaterText" name="searchParamater" placeholder="Enter an ingredient"></label>
             <button class="js-addGroup disabled" disabled="true">+</button>
@@ -13,7 +17,11 @@ function getIngredientsView(){
           </div>       
         </div>
 
-        <div class="additionalSearchParamaters">
+        <div class="additionalSearchParamaters">          
+          <h3>
+            <span></span>
+            Search Options:
+          </h3>
           Number of Results:<br>
           <label class="numResultsLbl"><input type="text" class="searchNumResultsText" name="searchNumResults" placeholder="From 1 to 20, default is 10"></label><br>
           <label class="selShoppingPriorityLbl">

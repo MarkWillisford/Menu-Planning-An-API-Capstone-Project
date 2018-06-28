@@ -54,7 +54,9 @@ function removeSearchParamaterGroup(){
     // Check for a single group remaining and if so deactivate the removal button
     if($('.searchParamaterGroup').length===1){
       $('.js-removeGroup').prop('disabled',true).addClass('disabled');
-      $('.js-addGroup').prop('disabled',false).removeClass('disabled');
+      if($('.searchParamaterText').val().length!==0){
+        $('.js-addGroup').prop('disabled',false).removeClass('disabled');
+      }
     }
   });    
 }
@@ -71,9 +73,6 @@ function onTypingInSearch(){
     // if there are now zero characters then deactivate the same buttons
     else if($(this).val().length===0){
       $(this).parent().next().prop('disabled',true).addClass('disabled');
-      // however we can only deactivate the submit button if all text inputs are empty - so how do I do that . . .   
-      // TODO!!
-      // $('.js-submitButton').prop('disabled',true).addClass('disabled');
     }
   });   
 }
@@ -211,6 +210,16 @@ function backToSearchResults(){
     event.preventDefault();
     displaySearchData();
   })
+}
+
+// This function takes an object and a key and varifies that the key value pair exists.
+function getProp(object, keys, defaultVal = 'na') {
+  keys = Array.isArray(keys) ? keys : keys.replace(/(\[(\d)\])/g, '.$2').split('.');
+  object = object[keys[0]];
+  if (object && keys.length > 1) {
+    return getProp(object, keys.slice(1), defaultVal);
+  }
+  return object === undefined ? defaultVal : object;
 }
 
 // This function accepts a string, converts it to HTML and adds it to the DOM - note: security risk

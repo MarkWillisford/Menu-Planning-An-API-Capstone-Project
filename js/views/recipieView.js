@@ -10,7 +10,9 @@ function getRecipieView(data){
 	    <img class="image" src=${data.image} alt="${data.title}" data-id="${data.id}"></br>
 	    <a href="${data.sourceUrl}" target="_blank">Offsite Reference</a>
 	    <a href="${data.spoonacularSourceUrl}" target="_blank">Spoonacular Reference</a>
-	    <p>Prepared In: ${data.preparationMinutes}</p>
+	    <p>Prepared In: ${
+	    	data.preparationMinutes
+	    }</p>
 	    <p>Ready In: ${data.readyInMinutes} minutes</p>
 	    <p>Servings: ${data.servings}</p>
 	    <p>Price per serving: ${pricePerServing / 100}</p>
