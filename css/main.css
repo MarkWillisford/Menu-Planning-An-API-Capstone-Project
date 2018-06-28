@@ -13,11 +13,19 @@ header, footer, .row{
 h1{
     color: #A2E974;
 }
+fieldset{
+    width: auto;
+    padding: 3px;
+}
+button{
+    margin: 3px;
+}
 
 .welcomeViewSection{
     text-align: center;    
 }
 
+/*  */
 .js-searchByIngredientsViewBtn{
     background-color: #1D3B0A;
     color: #81C753;
@@ -26,6 +34,15 @@ h1{
 .js-searchByIngredientsViewBtn:hover { 
     background-color: #A2E974;
     color: #3A6A1B;
+}
+
+.ingredientsSearchView{
+    text-align: center;        
+}
+
+.additionalSearchParamaters{
+    margin-top: 50px;
+    margin-bottom: 25px;
 }
 
 .js-result-name{

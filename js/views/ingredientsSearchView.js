@@ -1,18 +1,31 @@
 function getIngredientsView(){
 	ingredientsView = `
-  <div class="ingredientsView"
-    <h1>Search by Ingredients</h1>
-    <section>
+  <div class="ingredientsView">
+    <section class="ingredientsSearchView">
+      <h2>Search by Ingredients</h2>
       <form class="searchIngredientsForm" action="Unknown" method="post">
         <legend class="searchFields"></legend>
-          <div class="searchParamaterGroups">
-            <div class="searchParamaterGroup">
-              <label><input type="text" class="searchParamaterText" name="searchParamater" placeholder="Enter an ingredient"></label>
-              <button class="js-addGroup disabled" disabled="true">+</button>
-              <button class="js-removeGroup disabled" disabled="true">-</button>
-            </div>       
-          </div> 
-        <button type="submit" class="js-submitButton disabled" disabled="true">Search</button>
+        <div class="searchParamaterGroups">
+          <div class="searchParamaterGroup">
+            <label><input type="text" class="searchParamaterText" name="searchParamater" placeholder="Enter an ingredient"></label>
+            <button class="js-addGroup disabled" disabled="true">+</button>
+            <button class="js-removeGroup disabled" disabled="true">-</button>
+          </div>       
+        </div>
+
+        <div class="additionalSearchParamaters">
+          Number of Results:<br>
+          <label class="numResultsLbl"><input type="text" class="searchNumResultsText" name="searchNumResults" placeholder="From 1 to 20, default is 10"></label><br>
+          <label class="selShoppingPriorityLbl">
+            Ranking<br>
+            <select>
+              <option value="1">Maximized used ingredients</option>
+              <option value-"2">Minimize missing ingredients</option>
+            </select>
+          </label>
+        </div>
+
+        <button type="submit" class="js-submitButton disabled" disabled="true">Search >></button>
 
         <!-- This feature is unavailable at this time, it has been suggested as a possible feature
         <fieldset>
