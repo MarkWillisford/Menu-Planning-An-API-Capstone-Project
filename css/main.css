@@ -7,8 +7,37 @@ header{
     background-color: #5B9833;
     text-align: center;
 }
-header, footer, .row{
+footer, .row{
   margin-bottom: 20px;
+}
+nav{    
+    display: block;
+    margin: 0;
+    padding: 1px 0;
+    height: 26px;
+    border-bottom: 1px solid black;
+}
+nav a.firstA{
+    background: #78451f;
+    color: #ffb67f;
+}
+nav a{
+    float: left;
+    background: #ffb67f;
+    color: #43230c;
+    position: relative;
+    display: block;
+    margin: 1px;
+    height: 24px;
+    width: 49%;
+    font-size: 12px;
+    line-height: 24px;
+    text-transform: uppercase;
+    text-align: center;    
+}
+nav a:hover{
+    background-color: #43230C;
+    color: #ffb67f;
 }
 h1{
     color: #A2E974;
@@ -19,6 +48,15 @@ fieldset{
 }
 button{
     margin: 3px;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    padding-left: 5%;
+    background-color: #B062C0;
+    color: #45164F;
 }
 
 .welcomeViewSection{
