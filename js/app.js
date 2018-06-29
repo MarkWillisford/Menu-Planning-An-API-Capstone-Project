@@ -164,15 +164,22 @@ function displaySearchDataWrapper(data){
 
 // These functions will display the results of the AJAX calls to the page
 function displaySearchData(){
-  // console.log(RECIPIE_SEARCH_RESULTS);  
+   console.log(RECIPIE_SEARCH_RESULTS);  
   // Rendering methods
 
-  const html = RECIPIE_SEARCH_RESULTS.map(item => `<div>
-      <h2>${item.title}</h2>
-      <!--<a href="">-->
-      <img class="image-link" src=${item.image} width="64" height="64" alt="${item.title}" data-id="${item.id}">
-      <!--</a>-->
-    </div>`);
+  const html = RECIPIE_SEARCH_RESULTS.map(item => `
+    <div class="recipePreview">
+      <h3>
+        <button class="titleLinkBtn">${item.title}</span>
+      </h3>
+      <button class="imageLinkBtn">
+        <img class="image-link" src=${item.image} alt="${item.title}" data-id="${item.id}">
+      </span>
+      <div class="moreData">
+        <span>Uses: ${item.usedIngredientCount}, Missed: ${item.missedIngredientCount}</span>
+      </div>      
+    </div>
+  `);
 
   /* temporary - just to make it work for now */
   $('.main > div ').remove();
