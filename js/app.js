@@ -168,13 +168,13 @@ function displaySearchData(){
   // Rendering methods
 
   const html = RECIPIE_SEARCH_RESULTS.map(item => `
-    <div class="recipePreview">
+    <div class="recipePreview col-3">
       <h3>
-        <button class="titleLinkBtn">${item.title}</span>
+        <button class="titleLinkBtn recipeLink" data-id="${item.id}">${item.title}</button>
       </h3>
       <button class="imageLinkBtn">
-        <img class="image-link" src=${item.image} alt="${item.title}" data-id="${item.id}">
-      </span>
+        <img class="image-link recipeLink" src=${item.image} alt="${item.title}" data-id="${item.id}">
+      </button>
       <div class="moreData">
         <span>Uses: ${item.usedIngredientCount}, Missed: ${item.missedIngredientCount}</span>
       </div>      
@@ -187,6 +187,7 @@ function displaySearchData(){
 
   render(getRecipiesResultsView());
   $('.resultsViewSection').html(html);
+
 }
 
 function displayRecipieData(data){
@@ -201,7 +202,7 @@ function displayRecipieData(data){
 }
 
 function recipieLinkButton(){
-  $('.main').on('click', '.image-link', function(event){
+  $('.main').on('click', '.recipeLink', function(event){
     event.preventDefault();
     //console.log(`Inside link button function - 'button' has been clicked`);
     //console.log( $(this).attr('data-id') );
