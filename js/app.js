@@ -27,6 +27,8 @@ function searchByNutritionButton(){
   });  
 }
 
+// This function listens for button click and adds a group of elements allowing for an additional 
+// ingrediant to be searched for
 function addSearchParamaterGroup(){
   $('.main').on('click', '.js-addGroup', function (event) {    
     event.preventDefault();   
@@ -46,6 +48,7 @@ function addSearchParamaterGroup(){
   });  
 }
 
+// this function listens for a button click and removes the group of elements
 function removeSearchParamaterGroup(){
   $('.main').on('click', '.js-removeGroup', function (event) {    
     event.preventDefault();
@@ -80,6 +83,7 @@ function onTypingInSearch(){
 // This function listens for the user to press the submit button on a search page
 function searchByIngredientsSubmitButton(){
   $('.main').on('submit', '.searchIngredientsForm', function (event) { 
+    // console.log("Hi in searchByIngredientsSubmitButton");
     event.preventDefault();
     /* Working for Single search paramaters - 
     const queryTarget = $(event.currentTarget).find('.searchParamaterText');
@@ -101,13 +105,29 @@ function searchByIngredientsSubmitButton(){
     const queryBoxesValuesJSON = JSON.stringify(queryBoxesValues);
     // console.log(queryBoxesValues);
 
+    // check the number of results text box for optional input
+    const queryResultsTarget = $(event.currentTarget).find('.searchNumResultsText');
+    let queryResults = 0;
+
+    if(queryResultsTarget.val() > 0 && queryResultsTarget.val() < 21){
+      queryResults = queryResultsTarget.val();
+    }
+
+    // check the select element 
+    const shoppingPriority = $(event.currentTarget).find('.selShoppingPriority option:selected').val();
+
     // and finally send it off to the API with the call back function
-    getDataFromIngredientsApi(queryBoxesValuesJSON, displaySearchDataWrapper);
+    if(queryResults){
+      getDataFromIngredientsApi(queryBoxesValuesJSON, displaySearchDataWrapper, shoppingPriority, queryResults);
+    } else {
+      getDataFromIngredientsApi(queryBoxesValuesJSON, displaySearchDataWrapper, shoppingPriority);
+    }
   });  
 }
 
 // This function builds the data and calls the AJAX .getJSON method
-function getDataFromIngredientsApi(searchTerm, callback){
+function getDataFromIngredientsApi(searchTerm, callback, shoppingPriority, queryResults = 10){
+  // console.log("Hi in getDataFromIngredientsApi");
   // console.log(searchTerm);
   $.ajax({
     url: SEARCH_BY_INGREDIENTS_UTL,
@@ -116,8 +136,8 @@ function getDataFromIngredientsApi(searchTerm, callback){
       fillIngredients: "true",
       ingredients: searchTerm,
       limitLicense: "false",
-      number: "10",    // This is currently lowered for testing
-      ranking: "1"
+      number: queryResults,    
+      ranking: shoppingPriority
     },
     datatype: 'json',
     success: callback,
@@ -155,6 +175,7 @@ function getDataFromRecipiesApi(searchTerm, callback){
 function displaySearchDataWrapper(data){
   // Set the global variable
   RECIPIE_SEARCH_RESULTS = data;
+  // console.log("Hi in displaySearchDataWrapper");
   // console.log(RECIPIE_SEARCH_RESULTS);
 
   // Call the display function
@@ -164,7 +185,8 @@ function displaySearchDataWrapper(data){
 
 // These functions will display the results of the AJAX calls to the page
 function displaySearchData(){
-   console.log(RECIPIE_SEARCH_RESULTS);  
+  // console.log("Hi in displaySearchData");
+  // console.log(RECIPIE_SEARCH_RESULTS);  
   // Rendering methods
 
   const html = RECIPIE_SEARCH_RESULTS.map(item => `
@@ -177,7 +199,7 @@ function displaySearchData(){
       </button>
       <div class="moreData">
         <span>Uses: ${item.usedIngredientCount}, Missed: ${item.missedIngredientCount}</span>
-      </div>      
+      </div>  
     </div>
   `);
 
@@ -197,6 +219,7 @@ function displayRecipieData(data){
   $('.main > div ').remove();
   /* end temporary code */
 
+  // console.log(data);
   render(getRecipieView(data));
   //$('.resultsViewSection').html(html);  
 }
@@ -234,6 +257,7 @@ function getProp(object, keys, defaultVal = 'na') {
 function render(view){
   $('.main').append(view);
 }
+
 
 function runApp(){
   // Render the starting view by calling a function found in the applicable .js file in the Views 

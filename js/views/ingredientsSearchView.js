@@ -26,9 +26,9 @@ function getIngredientsView(){
           <label class="numResultsLbl"><input type="text" class="searchNumResultsText" name="searchNumResults" placeholder="From 1 to 20, default is 10"></label><br>
           <label class="selShoppingPriorityLbl">
             Ranking<br>
-            <select>
-              <option value="1">Maximized used ingredients</option>
-              <option value-"2">Minimize missing ingredients</option>
+            <select class="selShoppingPriority">
+              <option value="1" selected="selected">Maximized used ingredients</option>
+              <option value="2">Minimize missing ingredients</option>
             </select>
           </label>
         </div>

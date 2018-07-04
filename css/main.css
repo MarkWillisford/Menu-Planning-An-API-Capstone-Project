@@ -65,7 +65,7 @@ button:not([disabled]):hover{
     background-color: #A2E974;
     color: #3A6A1B; 
     cursor: pointer;   
-}
+}/*
 footer{
     bottom: 0;
     width: 100%;
@@ -74,7 +74,7 @@ footer{
     background-color: #B062C0;
     color: #45164F;
     text-align: center;    
-}
+}*/
 
 .welcomeViewSection{
     text-align: center;    
@@ -117,23 +117,33 @@ h3 span {
 }
 
 /* For Phones */
+.resultsViewSection{
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;    
+}
+/* the recipe 'card' */
 .recipePreview{
     position: relative;
     /* width: 50%;              Needs to be responsive */
     padding: 0px;
-}
+}   /* recipe card title */
 .recipePreview h3{
     margin-bottom: 0px;
 }
 .titleLinkBtn{
+    height: 36px;
     margin: 0px;
 }
 .imageLinkBtn{
     padding: 0px;
+    margin: 0px;
     width: 100%;
 }
 .image-link{
     width: 100%;
+    height: 100%;
 }
 /* Rules for 'animated' display */
 .recipePreview:hover>.moreData{
@@ -155,16 +165,95 @@ h3 span {
     font-size: 0em;
 }
 
+/************************************/
+/* Rules for the recipe detail page */
+/************************************/
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.recipeImage{
+    max-width: 100%;
+} 
+/* Off site reference links */
+.referenceLinks{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.referenceLinks a{    
+    cursor: pointer;
+    text-decoration: underline;    
+}
+.referenceLinks a:hover{
+    color: #81C753;
+    background-color: #3A6A1B;
+}
+/* preparation data */
+.preparationData{
+    width: 100%;
+    height: auto;
+    margin-bottom: 2em;
+}
+.preparationDataList{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;    
+}
+/* ingredient list */
+.ingredientWrapper{
+    float: left;
+    height: 160px;
+    margin-bottom: 2em;
+}
+.ingredient{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-right: 5px;
+    margin-top: 24px;
+}
+.ingredientAmountUS{
+    display: block;
+    top: 0;
+    height: 19px;
+    font-size: 16px;
+    text-align: center;
+}
+.ingredientImageWrapper{
+    width: 110px;
+    height: 105px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 100px;
+    background-color: #fff;
+    position: relative;
+}
+.ingredientImage{
+    max-width: 100px;
+    max-height: 69px;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.ingredientName{        
+    bottom: -15px;
+    height: 26px;
+    line-height: 14px;
+    text-align: center;
+}
 
-
-
-/* The container <div> - needed to position the dropdown content */
+/* The container <div> - needed to position the dropdown content 
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
+/* Dropdown Content (Hidden by Default) 
 .dropdown-content {
     display: none;
     position: absolute;
@@ -174,7 +263,7 @@ h3 span {
     z-index: 1;
 }
 
-/* Links inside the dropdown */
+/* Links inside the dropdown 
 .dropdown-content button {
     color: black;
     padding: 12px 16px;
@@ -182,10 +271,11 @@ h3 span {
     display: block;
 }
 
-/* Change color of dropdown links on hover */
+/* Change color of dropdown links on hover 
 .dropdown-content button:hover {background-color: #ddd}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container 
+when the user clicks on the dropdown button) 
 .show {display:block;}
 
 /* Change color of disabled buttons */
