@@ -7,7 +7,7 @@ function getRecipieView(data){
     <h1>${data.title}</h1>
     <section class="resultsViewSection">
 		<div class="col-12">
-    		<img class="recipeImage centered" src=${data.image} alt="${data.title}" data-id="${data.id}">
+    		<img class="recipeImage centered" src="${data.image}" alt="${data.title}" data-id="${data.id}">
     	</div>    	
 		<div class="referenceLinks col-12">
 			<a href="${data.sourceUrl}" target="_blank">Offsite Reference</a>
@@ -24,7 +24,7 @@ function getRecipieView(data){
 
 	    <h3 class="col-12">
             <span></span>Ingredients:</h3>	
-		<div class="ingredients>"	    
+		<div class="ingredients">	    
 	    	${data.extendedIngredients.map(item => `
 	    		<div class="ingredientWrapper">
 		    		<div class="ingredient">
@@ -35,7 +35,7 @@ function getRecipieView(data){
 		    			<div class="ingredientName">${item.name}</div>
 	    			</div>
 		    	</div>
-		    `)}			
+		    `).join("")}			
 		</div>
 
 	    <h3 class="col-12">

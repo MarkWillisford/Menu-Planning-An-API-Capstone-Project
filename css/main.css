@@ -202,7 +202,7 @@ h3 span {
 }
 /* ingredient list */
 .ingredientWrapper{
-    float: left;
+    display: inline-block;
     height: 160px;
     margin-bottom: 2em;
 }
@@ -291,4 +291,5 @@ when the user clicks on the dropdown button)
     display:inline-block;
     border: 1px solid black;
     padding: 5px;
+    margin: 2px;
 }
