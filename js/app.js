@@ -198,7 +198,10 @@ function displaySearchData(){
         <img class="image-link recipeLink" src=${item.image} alt="${item.title}" data-id="${item.id}">
       </button>
       <div class="moreData">
-        <span>Uses: ${item.usedIngredientCount}, Missed: ${item.missedIngredientCount}</span>
+        <span>
+          <!-- Broken API data Uses: ${item.usedIngredientCount}, Missed: ${item.missedIngredientCount}-->
+          Click for details
+        </span>
       </div>  
     </div>
   `);
