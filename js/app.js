@@ -19,6 +19,14 @@ function searchByIngredientsButton(){
   });  
 }
 
+// This function listens for the user to select the back to search button after entering invalid data
+function backToSearch(){
+  $('.main').on('click', '.js-backToSearchBtn', function (event) {    
+    $('.main > div ').remove();
+    render(getIngredientsView());
+  });  
+}
+
 // This feature is unavailable at this time, it has been suggested as a possible feature
 function searchByNutritionButton(){
   $('.main').on('click', '.js-searchByNutritionViewBtn', function (event) {    
@@ -107,11 +115,7 @@ function searchByIngredientsSubmitButton(){
 
     // check the number of results text box for optional input
     const queryResultsTarget = $(event.currentTarget).find('.searchNumResultsText');
-    let queryResults = 0;
-
-    if(queryResultsTarget.val() > 0 && queryResultsTarget.val() < 21){
-      queryResults = queryResultsTarget.val();
-    }
+    const queryResults = queryResultsTarget.val();
 
     // check the select element 
     const shoppingPriority = $(event.currentTarget).find('.selShoppingPriority option:selected').val();
@@ -189,23 +193,36 @@ function displaySearchData(){
   // console.log(RECIPIE_SEARCH_RESULTS);  
   // Rendering methods
 
-  const html = RECIPIE_SEARCH_RESULTS.map(item => `
-    <div class="recipePreview col-3">
-      <h3>
-        <button class="titleLinkBtn recipeLink" data-id="${item.id}">${item.title}</button>
-      </h3>
-      <button class="imageLinkBtn">
-        <img class="image-link recipeLink" src=${item.image} alt="${item.title}" data-id="${item.id}">
-      </button>
-      <div class="moreData">
-        <span>
-          <!-- Broken API data Uses: ${item.usedIngredientCount}, Missed: ${item.missedIngredientCount}-->
-          Click for details
-        </span>
-      </div>  
-    </div>
-  `);
+  console.log(RECIPIE_SEARCH_RESULTS);
 
+  let html =``
+  if(RECIPIE_SEARCH_RESULTS.length<1){
+    html =  `
+      <section class="errorViewSection">
+        <p>
+          Please enter a valid ingredient
+        </p>
+        <button class="js-backToSearchBtn"><< Back to Search</button>          
+      </section>      
+    `;
+  } else {
+    html = RECIPIE_SEARCH_RESULTS.map(item => `
+      <div class="recipePreview col-3">
+        <h3>
+          <button class="titleLinkBtn recipeLink" data-id="${item.id}">${item.title}</button>
+        </h3>
+        <button class="imageLinkBtn">
+          <img class="image-link recipeLink" src=${item.image} alt="${item.title}" data-id="${item.id}">
+        </button>
+        <div class="moreData">
+          <span>
+            <!-- Broken API data Uses: ${item.usedIngredientCount}, Missed: ${item.missedIngredientCount}-->
+            Click for details
+          </span>
+        </div>  
+      </div>
+    `);
+  }
   /* temporary - just to make it work for now */
   $('.main > div ').remove();
   /* end temporary code */
@@ -276,6 +293,7 @@ function runApp(){
   searchByIngredientsSubmitButton();
   recipieLinkButton();
   backToSearchResults();
+  backToSearch();
 }
 
 $(runApp);

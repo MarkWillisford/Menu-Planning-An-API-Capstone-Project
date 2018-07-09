@@ -22,8 +22,8 @@ function getIngredientsView(){
             <span></span>
             Search Options:
           </h3>
-          Number of Results:<br>
-          <label class="numResultsLbl"><input type="text" class="searchNumResultsText" name="searchNumResults" placeholder="From 1 to 20, default is 10"></label><br>
+          <label for="searchNumResultsText">Number of Results:</label>         <br>
+          <input type="Number" min="1" max="20" value="10" class="searchNumResultsText" id="searchNumResultsText" name="searchNumResults" placeholder="1 to 20, default is 10"><br>
           <label class="selShoppingPriorityLbl">
             Ranking<br>
             <select class="selShoppingPriority">

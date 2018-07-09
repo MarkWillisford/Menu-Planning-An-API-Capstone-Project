@@ -90,6 +90,9 @@ footer{
     background-color: #A2E974;
     color: #3A6A1B;
 }
+.js-backToSearchBtn{
+    display: block;
+}
 
 .ingredientsSearchView{
     text-align: center;        
