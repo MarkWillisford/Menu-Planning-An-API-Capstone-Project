@@ -4,7 +4,7 @@ function getRecipieView(data){
 	recipieView = `
   <div class="recipieView">
   	<button class="backToSearchResults">Back to results</button>
-    <h1>${data.title}</h1>
+    <h2>${data.title}</h2>
     <section class="resultsViewSection">
 		<div class="col-12">
     		<img class="recipeImage centered" src="${data.image}" alt="${data.title}" data-id="${data.id}">
@@ -41,21 +41,23 @@ function getRecipieView(data){
 	    <h3 class="col-12">
             <span></span>Instructions:</h3>	
 
-		<div class="Instructions">
+		<div class="instructions">
 			<p>${getProp(data, "instructions", "NA")}</p>
 		</div>
 
 	    <h3 class="col-12">
             <span></span>Nutrition Information:</h3>	
 
-		<p>Overview</p>
-		<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[0].amount", 0))} Calories</div>
-		<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[7].amount", 0))}g Protein</div>
-		<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[1].amount", 0) + 
-					getProp(data, "nutrition.nutrients[2].amount", 0))}g Total Fat</div>
-		<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[4].amount", 0))}g Sugar</div>
-		<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[8].amount", 0))}µg Vitamin K</div>
-		<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[3].amount", 0))}g Carbs</div>
+        <div class="nutrition">
+			<p>Overview</p>
+			<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[0].amount", 0))} Calories</div>
+			<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[7].amount", 0))}g Protein</div>
+			<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[1].amount", 0) + 
+						getProp(data, "nutrition.nutrients[2].amount", 0))}g Total Fat</div>
+			<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[4].amount", 0))}g Sugar</div>
+			<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[8].amount", 0))}µg Vitamin K</div>
+			<div class="nutritionOverview">${Math.round(getProp(data, "nutrition.nutrients[3].amount", 0))}g Carbs</div>
+    	</div>
     </section>
   </div>
 	`;

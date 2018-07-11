@@ -193,7 +193,7 @@ function displaySearchData(){
   // console.log(RECIPIE_SEARCH_RESULTS);  
   // Rendering methods
 
-  console.log(RECIPIE_SEARCH_RESULTS);
+  // console.log(RECIPIE_SEARCH_RESULTS);
 
   let html =``
   if(RECIPIE_SEARCH_RESULTS.length<1){
@@ -241,6 +241,8 @@ function displayRecipieData(data){
 
   // console.log(data);
   render(getRecipieView(data));
+  $('.main').css("background-color", "rgba(255,255,255,0.75)");
+  $('.main').css("color", "black");
   //$('.resultsViewSection').html(html);  
 }
 
@@ -249,9 +251,7 @@ function recipieLinkButton(){
     event.preventDefault();
     //console.log(`Inside link button function - 'button' has been clicked`);
     //console.log( $(this).attr('data-id') );
-
     getDataFromRecipiesApi($(this).attr('data-id'), displayRecipieData);
-
   })
 }
 
@@ -260,6 +260,8 @@ function backToSearchResults(){
   $('.main').on('click', '.backToSearchResults', function(event){
     event.preventDefault();
     displaySearchData();
+    $('.main').css("background-color", "rgba(0,0,0,0.5)");
+    $('.main').css("color", "white");
   })
 }
 
