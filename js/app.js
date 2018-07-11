@@ -214,7 +214,7 @@ function displaySearchData(){
         <button class="imageLinkBtn">
           <img class="image-link recipeLink" src=${item.image} alt="${item.title}" data-id="${item.id}">
         </button>
-        <div class="moreData">
+        <div class="moreData .col-3">
           <span>
             <!-- Broken API data Uses: ${item.usedIngredientCount}, Missed: ${item.missedIngredientCount}-->
             Click for details

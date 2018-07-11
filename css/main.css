@@ -1,54 +1,39 @@
+html { 
+  background: url("../images/salad.jpeg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  background-color: #1a100500;
+  background-blend-mode: screen;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
 .wrapper{
   min-height: calc(100vh - 50px);
 }
 header{
-    width: 100%;
-    height: auto;
-    background-color: #5B9833;
-    text-align: center;
-}
-nav{    
-    border-bottom: solid black 1px;
-    display: block;
-    margin: 0;
-    padding: 1px 0;
-    height: 27px;
-    font-size: 0px;
-}
-nav a.firstA{
-    background: #78451f;
-    color: #ffb67f;
-    border-right: solid white 2px;
-}
-nav a{
-    position: relative;
-    background: #ffb67f;
-    color: #43230c;
-    display: inline-block;
-    margin: 0px;
-    height: 24px;
-    width: 50%;
-    font-size: 12px;
-    line-height: 24px;
-    text-transform: uppercase;
-    text-align: center;    
-}
-nav a:hover{
-    background-color: #43230C;
-    color: #ffb67f;
-    cursor: pointer;
-}
-nav a span{
-    background: #ad6b3a;
-    display: block;
-    position: absolute;
-    top: 5px;
-    left: 8px;
-    width: 8px;
-    height: 8px;
+    width: 90%;
+    height: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0,0,0,0.5);
 }
 h1{
-    color: #A2E974;
+    color: white;
+    text-align: center;
+}
+main{
+    width: 90%;    
+    margin-top: 2vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+    background-color: rgba(0,0,0,0.5);
 }
 fieldset{
     width: auto;
@@ -57,14 +42,16 @@ fieldset{
 button{
     margin: 3px;
 }
-button:not([disabled]){    
-    background-color: #1D3B0A;
-    color: #81C753;
+button:not([disabled]){ 
+    font-weight: bold;   
+    /*background-color: #1D3B0A;
+    color: #81C753;*/
 }
 button:not([disabled]):hover{
-    background-color: #A2E974;
-    color: #3A6A1B; 
+    /*background-color: #A2E974;
+    color: #3A6A1B; */
     cursor: pointer;   
+    font-style: italic;
 }/*
 footer{
     bottom: 0;
@@ -82,13 +69,13 @@ footer{
 
 /*  */
 .js-searchByIngredientsViewBtn{
-    background-color: #1D3B0A;
-    color: #81C753;
+    /*background-color: #1D3B0A;
+    color: #81C753;*/
     padding: 5px;
 }
 .js-searchByIngredientsViewBtn:hover { 
-    background-color: #A2E974;
-    color: #3A6A1B;
+    /*background-color: #A2E974;
+    color: #3A6A1B;*/
 }
 .js-backToSearchBtn{
     display: block;
@@ -135,7 +122,10 @@ h3 span {
 }
 .titleLinkBtn{
     height: 36px;
+    width: 100%;
     margin: 0px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
 }
 .imageLinkBtn{
     padding: 0px;
@@ -153,13 +143,16 @@ h3 span {
     font-size: 1em;
 }
 .moreData{
-    background-color: #B062C0;
-    color: #45164F;
+    /*background-color: #B062C0;
+    color: #45164F;*/
+    background-color: rgba(0,0,0,0.75);
+    color: white;
     bottom: 0;
+    right: 0;
     text-align: right;
     padding-right: 6px;
     position: absolute;
-    width: 100%;
+    width: 100% !important;
     height: 0em;
     line-height: 0em;
     transition: .3s ease-in-out;
