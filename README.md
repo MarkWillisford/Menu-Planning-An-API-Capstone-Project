@@ -15,3 +15,7 @@ Screenshots
 ![Alt text](ScreenShots/RecipeScreenTop.png?raw=true "Recipe Details Screen")
 
 ![Alt text](ScreenShots/RecipeScreenBottom.png?raw=true "Recipe Details Screen")
+
+Summery
+This app allows the user to easily search large databases for recipes that match given ingrediants. It then displays extra details about the recipe including pricing data, instructions, nutrition and ingrediants. 
+
