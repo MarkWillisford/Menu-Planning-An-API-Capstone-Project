@@ -3,3 +3,7 @@ A capstone project for the Thinkful bootcamp utilizing AJAX and asynchronous API
 The app will allow you to input ingredients that you want to cook with and find appropriate recipes from the Spoonacular APIs. You may then select a recipe for more details and preparation instructions.  
 
 Found at: https://markwillisford.github.io/Menu-Planning-An-API-Capstone-Project/
+
+Screenshots
+
+![Alt text](ScreenShots/LandingScreen.png?raw=true "Landing Screen")
