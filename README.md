@@ -7,3 +7,11 @@ Found at: https://markwillisford.github.io/Menu-Planning-An-API-Capstone-Project
 Screenshots
 
 ![Alt text](ScreenShots/LandingScreen.png?raw=true "Landing Screen")
+
+![Alt text](ScreenShots/SearchScreen.png.png?raw=true "Search Screen")
+
+![Alt text](ScreenShots/SearchResults.png?raw=true "Search Results")
+
+![Alt text](ScreenShots/RecipeScreenTop.png?raw=true "Recipe Details Screen")
+
+![Alt text](ScreenShots/RecipeScreenBottom.png?raw=true "Recipe Details Screen")
