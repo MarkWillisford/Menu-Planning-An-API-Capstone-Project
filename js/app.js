@@ -93,10 +93,6 @@ function searchByIngredientsSubmitButton(){
   $('.main').on('submit', '.searchIngredientsForm', function (event) { 
     // console.log("Hi in searchByIngredientsSubmitButton");
     event.preventDefault();
-    /* Working for Single search paramaters - 
-    const queryTarget = $(event.currentTarget).find('.searchParamaterText');
-    const query = queryTarget.val(); 
-    */
 
     // first get an array of all the text boxes
     const queryBoxesValues = [];

@@ -44,24 +44,11 @@ button{
 }
 button:not([disabled]){ 
     font-weight: bold;   
-    /*background-color: #1D3B0A;
-    color: #81C753;*/
 }
 button:not([disabled]):hover{
-    /*background-color: #A2E974;
-    color: #3A6A1B; */
     cursor: pointer;   
     font-style: italic;
-}/*
-footer{
-    bottom: 0;
-    width: 100%;
-    padding: 5px;
-    padding-left: 5%;
-    background-color: #B062C0;
-    color: #45164F;
-    text-align: center;    
-}*/
+}
 
 .welcomeViewSection{
     text-align: center;    
@@ -111,7 +98,6 @@ h3 span {
 /* the recipe 'card' */
 .recipePreview{
     position: relative;
-    /* width: 50%;              Needs to be responsive */
     padding: 0px;
 }   /* recipe card title */
 .recipePreview h3{
@@ -140,8 +126,6 @@ h3 span {
     font-size: 1em;
 }
 .moreData{
-    /*background-color: #B062C0;
-    color: #45164F;*/
     background-color: rgba(0,0,0,0.75);
     color: white;
     bottom: 0;
@@ -240,37 +224,6 @@ h3 span {
     line-height: 14px;
     text-align: center;
 }
-
-/* The container <div> - needed to position the dropdown content 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown 
-.dropdown-content button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover 
-.dropdown-content button:hover {background-color: #ddd}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container 
-when the user clicks on the dropdown button) 
-.show {display:block;}
 
 /* Change color of disabled buttons */
 .disabled {
